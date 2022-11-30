@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Models\Teaching_plan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// 教案一覧画面を表示
+Route::get('/', 'Teaching_planController@showList')->name('teaching_plans');
