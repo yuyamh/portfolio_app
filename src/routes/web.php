@@ -2,6 +2,7 @@
 
 use App\Models\Models\Teaching_plan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Teaching_planController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 // 教案一覧画面を表示
-Route::get('/', 'Teaching_planController@showList')->name('teaching_plans');
+Route::get('/', [Teaching_planController::class, 'showList'])->name('teaching_plans');
