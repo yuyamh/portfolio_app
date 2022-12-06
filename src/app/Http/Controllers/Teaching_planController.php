@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Teaching_plan;
 
 class Teaching_planController extends Controller
 {
@@ -14,6 +15,7 @@ class Teaching_planController extends Controller
      */
     public function showList()
     {
-        return view('teaching_plan.list');
+        $teaching_plans = Teaching_plan::all();
+        return view('teaching_plan.list', ['teaching_plans' => $teaching_plans]);
     }
 }
