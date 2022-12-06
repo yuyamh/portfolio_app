@@ -17,3 +17,5 @@ use App\Http\Controllers\Teaching_planController;
 
 // 教案一覧画面を表示
 Route::get('/', [Teaching_planController::class, 'showList'])->name('teaching_plans');
+// 教案詳細画面を表示
+Route::get('/teaching_plan/{id}', [Teaching_planController::class, 'showDetail'])->name('show');
