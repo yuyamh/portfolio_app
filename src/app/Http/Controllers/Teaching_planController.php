@@ -45,5 +45,20 @@ class Teaching_planController extends Controller
         return view('teaching_plan.form');
     }
 
-    
+    /**
+     * 教案を投稿する
+     *
+     * @return view
+     */
+    public function exeStore(Request $request)
+    {
+        // 渡ってきた教案データを受け取る
+        $inputs = $request->all();
+        // 教案を登録する
+        Teaching_plan::create($inputs);
+        \Session::flash('err_msg', '教案を投稿しました！');
+        return redirect(route('teaching_plans'));
+    }
+
+
 }
