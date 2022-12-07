@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Teaching_plan;
+use App\Http\Requests\Teaching_planRequest;
 
 class Teaching_planController extends Controller
 {
@@ -50,7 +51,7 @@ class Teaching_planController extends Controller
      *
      * @return view
      */
-    public function exeStore(Request $request)
+    public function exeStore(Teaching_planRequest $request)
     {
         // 渡ってきた教案データを受け取る
         $inputs = $request->all();
