@@ -71,5 +71,48 @@ class Teaching_planController extends Controller
         return redirect(route('teaching_plans'));
     }
 
+    /**
+     * 教案編集画面を表示する
+     * @param int $id
+     * @return view
+     */
+    public function showEdit($id)
+    {
+        $teaching_plan = Teaching_plan::find($id);
+
+        if (is_null($teaching_plan)) {
+            \Session::flash('err_msg', 'データがありません。');
+            return redirect(route('teaching_plans'));
+        }
+        return view('teaching_plan.edit', ['teaching_plan' => $teaching_plan]);
+    }
+
+    /**
+     * 教案を更新する
+     *
+     * @return view
+     */
+    public function exeUpdate(Teaching_planRequest $request)
+    {
+        // 渡ってきた教案データを受け取る
+        $inputs = $request->all();
+
+        \DB::beginTransaction();
+        try {
+            // 教案を編集する
+            $teaching_plan = Teaching_plan::find($inputs['id']);
+            $teaching_plan->fill([
+                'title' => $inputs['title'],
+                'content' => $inputs['content'],
+            ]);
+            $teaching_plan->save();
+            \DB::commit();
+        } catch (\Throwable $e) {
+            \DB::rollback();
+            abort(500);
+        }
+        \Session::flash('err_msg', '教案を更新しました！');
+        return redirect(route('teaching_plans'));
+    }
 
 }
