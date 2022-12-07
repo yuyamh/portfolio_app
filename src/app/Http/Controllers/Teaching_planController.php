@@ -55,8 +55,18 @@ class Teaching_planController extends Controller
     {
         // 渡ってきた教案データを受け取る
         $inputs = $request->all();
-        // 教案を登録する
-        Teaching_plan::create($inputs);
+
+        \DB::beginTransaction();
+        try
+        {
+            // 教案を登録する
+            Teaching_plan::create($inputs);
+            \DB::commit();
+        } catch (\Throwable $e)
+        {
+            \DB::rollback();
+            abort(500);
+        }
         \Session::flash('err_msg', '教案を投稿しました！');
         return redirect(route('teaching_plans'));
     }
