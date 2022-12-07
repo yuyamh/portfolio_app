@@ -23,3 +23,7 @@ Route::get('/teaching_plan/create', [Teaching_planController::class, 'showCreate
 Route::post('/teaching_plan/store', [Teaching_planController::class, 'exeStore'])->name('store');
 // 教案詳細画面を表示
 Route::get('/teaching_plan/{id}', [Teaching_planController::class, 'showDetail'])->name('show');
+// 投稿した教案の編集画面を表示
+Route::get('/teaching_plan/edit/{id}', [Teaching_planController::class, 'showEdit'])->name('edit');
+// 投稿した教案の更新
+Route::post('/teaching_plan/update', [Teaching_planController::class, 'exeUpdate'])->name('update');
