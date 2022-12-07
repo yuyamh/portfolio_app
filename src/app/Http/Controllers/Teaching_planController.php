@@ -34,4 +34,16 @@ class Teaching_planController extends Controller
         }
         return view('teaching_plan.detail', ['teaching_plan' => $teaching_plan]);
     }
+
+    /**
+     * 教案投稿画面を表示する
+     *
+     * @return view
+     */
+    public function showCreate()
+    {
+        return view('teaching_plan.form');
+    }
+
+    
 }
