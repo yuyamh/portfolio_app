@@ -12,12 +12,14 @@
                 <th>番号</th>
                 <th>タイトル</th>
                 <th>日付</th>
+                <th></th>
             </tr>
             @foreach ($teaching_plans as $teaching_plan)
                 <tr>
                     <td>{{ $teaching_plan->id }}</td>
                     <td><a href="/teaching_plan/{{ $teaching_plan->id }}">{{ $teaching_plan->title }}</a></td>
                     <td>{{ $teaching_plan->updated_at }}</td>
+                    <td><button type="button" class="btn btn-primary" onclick="location.href='/teaching_plan/edit/{{ $teaching_plan->id }}'">編集</button></td>
                 </tr>
             @endforeach
         </table>
