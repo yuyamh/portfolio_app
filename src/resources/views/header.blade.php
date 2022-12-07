@@ -5,8 +5,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">教案一覧 <span class="sr-only"></span></a>
-            <a class="nav-item nav-link" href="#">教案投稿</a>
+            <a class="nav-item nav-link active" href="{{ route('teaching_plans') }}">教案一覧 <span class="sr-only"></span></a>
+            <a class="nav-item nav-link" href="{{ route('create') }}">教案投稿</a>
         </div>
     </div>
 </nav>
