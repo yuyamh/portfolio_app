@@ -27,3 +27,5 @@ Route::get('/teaching_plan/{id}', [Teaching_planController::class, 'showDetail']
 Route::get('/teaching_plan/edit/{id}', [Teaching_planController::class, 'showEdit'])->name('edit');
 // 投稿した教案の更新
 Route::post('/teaching_plan/update', [Teaching_planController::class, 'exeUpdate'])->name('update');
+// 投稿した教案の削除
+Route::post('/teaching_plan/delete/{id}', [Teaching_planController::class, 'exeDelete'])->name('delete');
