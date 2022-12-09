@@ -115,4 +115,28 @@ class Teaching_planController extends Controller
         return redirect(route('teaching_plans'));
     }
 
+    /**
+     * 投稿した教案を削除する
+     * @param int $id
+     * @return view
+     */
+    public function exeDelete($id)
+    {
+        if (empty($id)) {
+            \Session::flash('err_msg', 'データがありません。');
+            return redirect(route('teaching_plans'));
+        }
+
+        try {
+            // 教案を削除する
+            $teaching_plan = Teaching_plan::destroy($id);
+        } catch (\Throwable $e) {
+            \DB::rollback();
+            abort(500);
+        }
+
+
+        \Session::flash('err_msg', '教案を削除しました！');
+        return redirect(route('teaching_plans'));
+    }
 }
