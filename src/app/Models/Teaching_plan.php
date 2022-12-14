@@ -17,5 +17,6 @@ class Teaching_plan extends Model
     [
         'title',
         'content',
+        'file',
     ];
 }
