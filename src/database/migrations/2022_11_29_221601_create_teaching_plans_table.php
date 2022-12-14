@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->id();
                 $table->string('title', 100);
                 $table->text('content');
+                $table->text('file');
                 $table->timestamps();
             });
         }
