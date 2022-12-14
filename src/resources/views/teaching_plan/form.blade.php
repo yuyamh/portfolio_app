@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>教案投稿フォーム</h2>
-        <form method="POST" action="{{ route('store') }}" onSubmit="return checkSubmit()">
+        <form method="POST" action="{{ route('store') }}" onSubmit="return checkSubmit()" enctype="multipart/form-data">
         @csrf
             <div class="form-group">
                 <label for="title">
@@ -25,6 +25,17 @@
                 @if ($errors->has('content'))
                     <div class="text-danger">
                         {{ $errors->first('content') }}
+                    </div>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="file">
+                    アップロードする教案:
+                </label>
+                <input id="file" name="file" type="file" accept="image/jpeg, image/png, application/pdf, application/zip">
+                @if ($errors->has('file'))
+                    <div class="text-danger">
+                        {{ $errors->first('file') }}
                     </div>
                 @endif
             </div>
