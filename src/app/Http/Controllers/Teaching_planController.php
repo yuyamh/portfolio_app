@@ -55,6 +55,17 @@ class Teaching_planController extends Controller
     {
         // 渡ってきた教案データを受け取る
         $inputs = $request->all();
+        // 教案ファイルのパス取得
+        $file = $inputs['file'];
+        $path = '';
+        $fileName = $file->getClientOriginalName();
+        if (isset($file))
+        {
+            $path = $file->storeAs('teaching_plans', $fileName);
+        }
+
+        //パスを教案データに保存
+        $inputs['file'] = $path;
 
         \DB::beginTransaction();
         try

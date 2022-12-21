@@ -26,6 +26,7 @@ class Teaching_planRequest extends FormRequest
         return [
             'title' => 'required | max:100',
             'content' => 'required',
+            'file' => 'required'
         ];
     }
 }
